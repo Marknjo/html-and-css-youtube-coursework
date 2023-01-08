@@ -1,0 +1,8 @@
+{
+  "recommendations": [
+    "esbenp.prettier-vscode",
+    "wesbos.theme-cobalt2",
+    "ritwickdey.LiveServer",
+    "vscode-icons-team.vscode-icons"
+  ]
+}
