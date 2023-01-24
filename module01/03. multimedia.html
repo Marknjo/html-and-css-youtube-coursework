@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML | Multimedia</title>
+</head>
+
+<body>
+  <h1>Module 01.03: Adding Multimedia Elements</h1>
+
+  <!-- Adding Image -->
+  <h2>Images</h2>
+  <figure>
+    <img src="./imgs/projects-hero-img.jpg" alt="This is my hero image" width="400">
+
+    <figcaption>My Hero Image</figcaption>
+  </figure>
+
+
+
+  <!-- Adding Images with Picture Tag -->
+  <figure>
+    <picture>
+      <source width="160" srcset="./imgs/projects-hero-img.webp" type="image/webp">
+      <img src="./imgs/projects-hero-img.jpg" alt="This is my hero image" width="400">
+    </picture>
+
+  </figure>
+
+  <!-- Adding Audio -->
+  <figure>
+    <audio controls>
+      <source src="./audios/welcome-to-the-talking.m4a" type="audio/m4a">
+      <source src="./audios/welcome-to-the-talking.mp3" type="audio/mp3">
+
+      Looks like your browser does not support HTML 5 Syntax
+      <a href="./audios/welcome-to-the-talking.mp3" download>
+        Download This Audio
+      </a>
+    </audio>
+  </figure>
+
+
+  <!-- Adding Video -->
+  <figure>
+    <video width="320" controls>
+      <source src="https://placehold.co/1920x1080.mp4?text=Hello+World" type="video/mp4">
+
+      Looks like your browser does not support HTML 5 Syntax
+      <a href="./audios/welcome-to-the-talking.mp3" download>
+        Download This Video
+      </a>
+    </video>
+  </figure>
+
+  <!-- Embedding YouTube Videos -->
+  <figure>
+    <iframe width="320" height="180" src="https://www.youtube.com/embed/xWY-sspY8KA" title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+      allowfullscreen></iframe>
+  </figure>
+
+  <!-- Figure Element -->
+
+
+  <!-- Bonus: Track Tag -->
+
+
+</body>
+
+</html>
