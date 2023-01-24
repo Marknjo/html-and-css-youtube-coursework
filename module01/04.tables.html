@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML: Structuring Tables</title>
+</head>
+
+<body>
+
+  <h1>Tables</h1>
+
+  <table>
+    <caption>SalesBy Wholesalers Receipt</caption>
+
+    <colgroup>
+      <col style="background-color: beige;">
+      <col span="2" style="background-color: aliceblue;">
+    </colgroup>
+
+    <thead>
+      <tr>
+        <th rowspan="2" scope="col">Item Name</th>
+        <th colspan="2" scope="col">Items Particulars</th>
+      </tr>
+      <tr>
+        <th scope="col">Item Counts</th>
+        <th scope="col">Amount ($)</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <tr>
+        <td>Bar Soap</td>
+        <td>2</td>
+        <td>12</td>
+      </tr>
+      <tr>
+        <td>Cooking Oil</td>
+        <td>1</td>
+        <td>10</td>
+      </tr>
+      <tr>
+        <td>Washing Dish</td>
+        <td>3</td>
+        <td>50</td>
+      </tr>
+    </tbody>
+
+    <tfoot>
+      <tr>
+        <th scope="row">Total</th>
+        <td>6</td>
+        <td>184</td>
+      </tr>
+    </tfoot>
+
+  </table>
+
+</body>
+
+</html>
