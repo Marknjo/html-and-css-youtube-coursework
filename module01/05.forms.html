@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML | Forms With HTML</title>
+</head>
+
+<body>
+  <h1>Structuring Forms</h1>
+  <!-- 
+    1. form tag 
+    2. Common form attributes 
+        - action
+        - method
+        - enctype
+    3. Common Input Attributes 
+        - text, 
+        - email, 
+        - password, 
+        - number, 
+        - range, 
+        - date, 
+        - time
+        - file
+    4. Form Input Label tag
+    5. textarea tag
+    6. select, option, and optgroup
+    7. checkbox & radio button tag
+    8. fieldset & legend
+   -->
+
+  <form action="./" method="POST">
+    <label for="fullname">Name</label>
+    <input name="fullname" type="text" id="fullname" required placeholder="John Doe">
+    <br>
+    <br>
+    <label>
+      Email
+      <input name="email" type="email" id="email" required placeholder="johndoe@example.com">
+    </label>
+    <br>
+    <br>
+    <button type="submit">Sign In</button>
+  </form>
+
+  <br>
+  <br>
+  <br>
+
+  <form action="" enctype="multipart/form-data">
+    <input type="hidden" name="csrf_token" value="kjhakdjhfaksjd_89983jhkjhsfd">
+
+
+    <label for="age">Your Age</label>
+    <input type="number" name="age" id="age" min="10" max="60" value="10" defaultValue="10">
+
+    <br>
+    <br>
+    <label for="password">Your Password</label>
+    <input type="password" id="password" name="password">
+
+    <br>
+    <br>
+    <label for="date">Date</label>
+    <input type="date" id="date" name="date">
+
+
+    <br>
+    <br>
+    <label for="time">Time</label>
+    <input type="time" id="time" name="time">
+
+
+    <br>
+    <br>
+    <label for="file">Your Profile Pic</label>
+    <input type="file" id="file" name="file">
+
+    <h3>Textarea</h3>
+    <label for="message">Your Message</label>
+    <br>
+    <textarea name="message" id="message" cols="30" rows="10" placeholder="Hi there I wanted..."></textarea>
+
+    <br>
+    <br>
+    <fieldset>
+      <legend>Radio Buttons: Gender</legend>
+
+      <label for="female">Female:
+        <input type="radio" name="gender" id="female">
+      </label>
+      <br>
+      <label for="male">Male:
+        <input type="radio" name="gender" id="male">
+      </label>
+    </fieldset>
+
+    <!-- ./Checkboxes Buttons -->
+
+    <br>
+    <br>
+    <fieldset>
+      <legend>Select Your Programming Language</legend>
+
+      <label for="html">
+        HTML:
+        <input type="checkbox" name="programming_lang" id="html">
+      </label>
+      <br>
+      <label for="css">
+        CSS:
+        <input type="checkbox" name="programming_lang" id="css">
+      </label>
+      <br>
+      <label for="javascript">JavaScript:
+        <input type="checkbox" name="programming_lang" id="javascript">
+      </label>
+    </fieldset>
+
+
+    <br>
+    <br>
+    <fieldset>
+      <legend>Select Your Programming Language</legend>
+
+      <label for="prog_lang">Options</label>
+      <br>
+      <select name="prog_lang" id="prog_lang">
+        <option value="">Select Which One Applies To You</option>
+
+        <optgroup label="Frontend">
+          <option value="html">HTML</option>
+          <option value="CSS">css</option>
+          <option value="javascript">JavaScript</option>
+        </optgroup>
+
+        <optgroup label="Backend">
+          <option value="express">Express JS</option>
+          <option value="nextjs">NestJs</option>
+        </optgroup>
+
+      </select>
+    </fieldset>
+
+  </form>
+</body>
+
+</html>
