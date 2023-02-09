@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML & CSS Tips & Tricks | Background Images</title>
+
+  <style>
+    :root {
+      --primary-color: rgb(16, 229, 90);
+      --primary-light: rgb(228, 249, 235);
+      --primary-dark: rgb(0, 61, 21);
+
+      --gradient: linear-gradient(to top, rgba(0, 61, 21, .5), rgba(210, 246, 222, .6));
+    }
+
+    /* Quick Reset */
+    *,
+    *::after,
+    *::before {
+      margin: 0;
+      padding: 0;
+      box-sizing: inherit;
+    }
+
+    html {
+      box-sizing: border-box;
+      font-size: 62.5%;
+      font-family: Helvetica, sans-serif;
+    }
+
+    body {
+      font-size: 1rem;
+    }
+
+
+
+    .card {
+      width: 100vw;
+      height: 100vh;
+
+      color: var(--primary-light);
+      display: grid;
+      grid-template-rows: repeat(3, 1fr) 1fr;
+      justify-content: center;
+
+    }
+
+    /* Bonus: Add Background Gradient */
+    .card-img {
+      background-image: var(--gradient), url("imgs/nature-img.jpg");
+      background-size: cover;
+      background-position: bottom;
+
+    }
+
+    .card-content {
+      padding: 5rem;
+      grid-row: 2 / 3;
+      max-width: 50rem;
+    }
+
+    .card-title {
+      text-align: center;
+      font-size: 3.2rem;
+      text-transform: uppercase;
+      display: flex;
+      flex-direction: column;
+
+      margin-bottom: 3.2rem;
+    }
+
+    .card-title small {
+      font-size: 3.6;
+      font-weight: 200;
+      word-spacing: 1rem;
+
+    }
+
+    .card-title span {
+      font-size: 4.8rem;
+      letter-spacing: .5rem;
+      font-weight: 900;
+      color: var(--primary-color);
+    }
+
+    .card-text {
+      font-size: 1.8rem;
+      text-align: center;
+      line-height: 2.2rem;
+    }
+
+    .card-text:not(:last-child) {
+      margin-bottom: 2rem;
+    }
+  </style>
+</head>
+
+<body>
+  <main class="card card-img">
+    <div class="card-content">
+      <h1 class="card-title"><small>Be Inspired by</small><span>Nature</span></h1>
+
+      <p class="card-text">
+        Nature is a source of inspiration and wonder, and it holds the power to heal and uplift our spirits. In these
+        trying times, it is more important than ever to reconnect with the natural world and find solace in its beauty.
+        Let us be heroes for the earth, cherishing and protecting its precious resources.
+      </p>
+
+      <p class="card-text">
+        Join us in our mission to preserve the wonders of nature. Take action today and be a part of the solution.
+        Whether it's by reducing your carbon footprint, participating in local beach cleanups, or supporting
+        organizations dedicated to conservation, every effort makes a difference.
+      </p>
+
+      <p class="card-text">
+        Together, let us nurture the gifts of nature and allow it to inspire us to be our best selves. The time to act
+        is now. Let's make a positive impact on the world and preserve the beauty of nature for generations to come.
+      </p>
+    </div>
+  </main>
+
+
+</body>
+
+</html>
