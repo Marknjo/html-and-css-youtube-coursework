@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML & CSS Tips & Tricks | Add Background Image</title>
+
+  <style>
+    :root {
+      --primary-color: rgb(16, 229, 229);
+      --primary-light: rgb(228, 249, 249);
+      --primary-dark: rgb(0, 56, 61);
+
+      --gradient: linear-gradient(to top, rgba(0, 56, 61, .5), rgba(228, 249, 249, .6));
+    }
+
+    /* Quick Reset */
+    *,
+    *::after,
+    *::before {
+      margin: 0;
+      padding: 0;
+      box-sizing: inherit;
+    }
+
+    html {
+      box-sizing: border-box;
+      font-size: 62.5%;
+      font-family: Helvetica, sans-serif;
+    }
+
+    .container {
+      min-height: 100vh;
+      font-size: 1rem;
+      background-image: var(--gradient), url(imgs/beautiful-sunset.jpg);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+    }
+
+    .image-gallery {
+      display: flex;
+      flex-wrap: wrap;
+
+      /* Center Items and Content */
+      justify-items: center;
+      justify-content: center;
+    }
+
+    .image-gallery img {
+      width: 33.33%;
+      height: auto;
+      /* 1% is a little bit too small,
+         let's bump it to 20px -> 2rem
+       */
+      margin: 2rem;
+
+      /* Let's make the 
+      gallery a little bit 
+      Interesting */
+      box-shadow:
+        0 2px 5px rgba(0, 0, 0, 0.4),
+        0 1rem 2rem rgba(0, 0, 0, 0.2);
+      border-radius: 2rem;
+      border: 1px solid var(--primary-light)
+    }
+  </style>
+
+</head>
+
+<body>
+  <main class="container">
+    <div class="image-gallery">
+      <img src="./imgs/puppy-01.jpg" alt="Puppy Image 1">
+      <img src="./imgs/puppy-02.jpg" alt="Puppy Image 2">
+      <img src="./imgs/puppy-03.jpg" alt="Puppy Image 3">
+      <img src="./imgs/puppy-04.jpg" alt="Puppy Image 4">
+    </div>
+  </main>
+
+</body>
+
+</html>
