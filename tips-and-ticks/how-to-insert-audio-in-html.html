@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HTML & CSS Tips & Tricks | Inserting Audio In HTML</title>
+  <script src="./js/fouc-fix.js"></script>
+
+  <style>
+    :root {
+      --primary-color: rgb(197, 229, 16);
+      --primary-light-1: rgb(241, 246, 215);
+      --primary-light-2: rgb(254, 255, 248);
+      --primary-dark-1: rgb(48, 61, 0);
+      --primary-dark-2: rgb(31, 39, 2);
+      --primary-dark-3: rgb(8, 10, 2);
+
+      --gradient: linear-gradient(to top, rgba(48, 61, 0, .5), rgba(241, 246, 215, .6));
+
+      --gray-01: rgb(64, 65, 60);
+      --gray-02: rgb(129, 131, 121);
+      --gray-03: rgb(212, 214, 204);
+    }
+
+    /* Quick Reset */
+    /* Global styles */
+    @import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap");
+
+    /*
+   CSS RESET
+  1. Use a more-intuitive box-sizing model.
+*/
+    *,
+    *::before,
+    *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: inherit;
+    }
+
+    /*
+  3. Allow percentage-based heights in the application
+*/
+    html,
+    body {
+      height: 100%;
+    }
+
+    html {
+      box-sizing: border-box;
+    }
+
+    /*
+  Typographic tweaks!
+  4. Add accessible line-height
+  5. Improve text rendering
+*/
+    body {
+      line-height: 1.5;
+      -webkit-font-smoothing: antialiased;
+      position: relative;
+    }
+
+    /*
+  6. Improve media defaults
+*/
+    img,
+    picture,
+    video,
+    canvas,
+    svg {
+      display: block;
+      max-width: 100%;
+    }
+
+    /*
+  7. Remove built-in form typography styles
+*/
+    input,
+    button,
+    textarea,
+    select {
+      font: inherit;
+    }
+
+    /*
+  8. Avoid text overflows
+*/
+    p,
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+      overflow-wrap: break-word;
+    }
+
+    /*
+  9. Create a root stacking context
+*/
+    #root,
+    #__next {
+      isolation: isolate;
+    }
+
+    /* HTML ELements */
+    html {
+      box-sizing: border-box;
+      font-size: 62.5%;
+      font-family: Inter, Helvetica, sans-serif;
+    }
+
+    .container {
+      min-height: 100vh;
+      font-size: 1rem;
+      background-image: var(--gradient), url(imgs/beautiful-sunset.jpg);
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+
+
+    .episode,
+    .episodes {
+      border-radius: 2rem;
+    }
+
+    .episodes {
+      margin: 4rem;
+      width: 90%;
+    }
+
+
+    .episode {
+      display: grid;
+      grid-template-columns: [description-col-start]2fr[description-col-end host-start] 1fr [host-end];
+      grid-template-rows: [audio-player-start]auto[audio-player-end description-row-start] 1fr [description-row-end];
+      column-gap: 2.4rem;
+
+      background-color: var(--primary-dark-3);
+
+      border-radius: 2rem;
+
+      padding: 4rem 0;
+      color: var(--primary-light-1);
+
+      backdrop-filter: blur(5px);
+      -webkit-backdrop-filter: blur(5px);
+    }
+
+    .episode:not(:last-of-type) {
+      margin-bottom: 2rem;
+    }
+
+    /*
+     *
+     * Audio Player
+     * 
+     */
+    .episode-audio-player {
+      grid-row: audio-player-start / audio-player-end;
+      grid-column: description-col-start / description-col-end;
+
+
+
+      display: flex;
+      justify-content: center;
+      padding-left: 2.4rem;
+      margin-bottom: 3.2rem;
+    }
+
+    .episode-audio-player audio {
+      width: 100%;
+      border: 2px solid var(--primary-light-1);
+    }
+
+    .episode-audio-player audio {
+      background-color: var(--primary-light-1);
+      border-radius: 4px;
+    }
+
+    .episode-audio-player audio::-webkit-media-controls-panel {
+      background-color: var(--primary-light-1);
+      border-radius: 2px;
+    }
+
+
+    /* Episode Description CARD */
+    .episode-description-card {
+      grid-column: description-col-start / description-col-end;
+      grid-row: description-row-start / description-row-end;
+
+      padding-top: 2rem;
+    }
+
+    .episode-description-card>* {
+      margin-bottom: 2.4rem;
+    }
+
+    .episode-content,
+    .episode-header {
+      padding: 0 2.4rem;
+    }
+
+    .episode-header {
+      background-color: var(--gray-01);
+      padding-top: 1rem;
+      padding-bottom: 1rem;
+    }
+
+    .episode-title {
+      font-size: 2.4rem;
+      letter-spacing: 1px;
+      line-height: 1.1;
+      font-weight: 800;
+      color: var(--primary-color);
+    }
+
+    .episode-pub-date {
+      font-weight: 400;
+      font-size: 1.8rem;
+      text-transform: uppercase;
+      margin-top: .5rem;
+      color: var(--gray-03)
+    }
+
+    .episode-content {
+      padding-bottom: 2.4rem;
+      border-bottom: 1px solid var(--primary-dark-1);
+    }
+
+
+    .episode-text {
+      font-size: 1.6rem;
+      line-height: 1.4;
+
+      margin-bottom: 2rem;
+    }
+
+    /* 
+     * host Card 
+    */
+    .episode-host-card {
+      grid-column: host-start / host-end;
+      grid-row: audio-player-start / description-row-end;
+      padding-right: 2.4rem;
+    }
+
+    .episode-host-title {
+      font-size: 2rem;
+      margin-bottom: 2.4rem;
+    }
+
+    .episode-host-title>* {
+      display: flex;
+      flex-direction: column;
+      padding-right: 2.4rem;
+    }
+
+    .episode-host-title-desc {
+      line-height: 1;
+      text-transform: uppercase;
+    }
+
+    .episode-host-title-name {
+      font-weight: 400;
+    }
+
+    .episode-host-img {
+      display: block;
+      width: 90%;
+      height: auto;
+      border-radius: 4px;
+      margin: 0 auto;
+      margin-bottom: 2.4em;
+
+      outline: 2px solid var(--gray-02);
+      outline-offset: 6px;
+    }
+
+    .episode-bio {
+      background-color: var(--primary-dark-2);
+      padding: 1.2rem;
+      font-size: 1.4rem;
+
+      border-radius: 4px;
+      margin-bottom: 1.6em;
+    }
+
+    .episode-social {
+      display: flex;
+    }
+
+    .episode-social svg {
+      width: 2.8rem;
+      height: 2.8rem;
+      padding: 5px;
+    }
+
+    .episode-social a {
+      background-color: var(--gray-02);
+      border-radius: 4px;
+      margin: 5px;
+
+      transition: all .3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+
+    .episode-social a:hover {
+      background-color: var(--primary-color);
+    }
+  </style>
+
+</head>
+
+<body>
+  <main class="container ">
+    <section class="episodes">
+      <article class="episode">
+        <div class="episode-audio-player">
+          <audio controls>
+            <source src="./audios/welcome-to-the-talking.mp3" type="audio/mpeg">
+            <source src="./audios/welcome-to-the-talking.wav" type="audio/wav">
+
+            Your browser does not support the
+            audio element.
+          </audio>
+        </div>
+
+        <div class="episode-description-card">
+          <div class="episode-header">
+            <h3 class="episode-title">05: HTML & CSS, Tips & Tricks | Inserting Audio In HTML</h3>
+            <p class="episode-pub-date">February 12th 2023</p>
+          </div>
+
+          <div class="episode-content">
+            <p class="episode-text">
+              In this episode we are going to discuss on how to insert audio in HTML. This is exciting time for HTML
+              world because we do not have to build an audio player all by ourselves. Thanks to HTML 5 audio tag.
+            </p>
+          </div>
+        </div>
+
+        <div class="episode-host-card">
+          <h3 class="episode-host-title"><span class="episode-host-title-desc">Host</span><span
+              class="episode-host-title-name">Mark Njoroge</span></h3>
+
+          <img src="./imgs/author@0.1x.jpg" alt="Podcast host name" class="episode-host-img">
+
+          <p class="episode-bio">
+            Mark is self-taught software engineer from Kenya. He is not shy to use AI to supplement his skills. He
+            love's to
+            hung around other developers and sharing his JavaScript/frontend/backend self-taught journey.
+          </p>
+
+          <div class="episode-social">
+            <a href="#">
+              <svg>
+                <use xlink:href="./imgs/social-media-icons.svg#youtube-logo-fill"></use>
+              </svg>
+            </a>
+
+            <a href="#">
+              <svg>
+                <use xlink:href="./imgs/social-media-icons.svg#linkedin-logo-fill"></use>
+              </svg>
+            </a>
+
+            <a href="#">
+              <svg>
+                <use xlink:href="./imgs/social-media-icons.svg#twitter-logo-fill"></use>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="episode">
+        <div class="episode-audio-player">
+          <audio controls>
+            <source src="./audios/welcome-to-the-talking.mp3" type="audio/mpeg">
+            <source src="./audios/welcome-to-the-talking.wav" type="audio/wav">
+
+            Your browser does not support the
+            audio element.
+          </audio>
+        </div>
+
+        <div class="episode-description-card">
+          <div class="episode-header">
+            <h3 class="episode-title">04: HTML & CSS, Tips & Tricks | Add Background Image
+            </h3>
+            <p class="episode-pub-date">February 09th 2023</p>
+          </div>
+
+          <div class="episode-content">
+            <p class="episode-text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam velit suscipit omnis temporibus
+              exercitationem quae ut iure quod quas ipsa.
+
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut, maiores! Qui fugiat veniam exercitationem
+              quis?
+            </p>
+
+            <p class="episode-text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam velit suscipit omnis temporibus
+              exercitationem quae ut iure quod quas ipsa.
+
+            </p>
+
+            <p class="episode-text">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut, maiores! Qui fugiat veniam exercitationem
+              quis?
+            </p>
+          </div>
+        </div>
+
+        <div class="episode-host-card">
+          <h3 class="episode-host-title"><span class="episode-host-title-desc">Host</span><span
+              class="episode-host-title-name">Mark Njoroge</span></h3>
+
+          <img src="./imgs/author@0.1x.jpg" alt="Podcast host name" class="episode-host-img">
+
+          <p class="episode-bio">
+            Mark is self-taught software engineer from Kenya. He is not shy to use AI to supplement his skills. He
+            love's to
+            hung around other developers and sharing his JavaScript/frontend/backend self-taught journey.
+          </p>
+
+          <div class="episode-social">
+            <a href="#">
+              <svg>
+                <use xlink:href="./imgs/social-media-icons.svg#youtube-logo-fill"></use>
+              </svg>
+            </a>
+
+            <a href="#">
+              <svg>
+                <use xlink:href="./imgs/social-media-icons.svg#linkedin-logo-fill"></use>
+              </svg>
+            </a>
+
+            <a href="#">
+              <svg>
+                <use xlink:href="./imgs/social-media-icons.svg#twitter-logo-fill"></use>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
+
+      <article class="episode">
+        <div class="episode-audio-player">
+          <audio controls>
+            <source src="./audios/welcome-to-the-talking.mp3" type="audio/mpeg">
+            <source src="./audios/welcome-to-the-talking.wav" type="audio/wav">
+
+            Your browser does not support the
+            audio element.
+          </audio>
+        </div>
+
+        <div class="episode-description-card">
+          <div class="episode-header">
+            <h3 class="episode-title">03: HTML & CSS, Tips & Tricks | Adding Images Tips</h3>
+            <p class="episode-pub-date">February 12th 2023</p>
+          </div>
+
+          <div class="episode-content">
+            <p class="episode-text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam velit suscipit omnis temporibus
+              exercitationem quae ut iure quod quas ipsa.
+
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut, maiores! Qui fugiat veniam exercitationem
+              quis?
+            </p>
+
+            <p class="episode-text">
+              Lorem ipsum dolor sit amet consectetur adipisicing elit. Aliquam velit suscipit omnis temporibus
+              exercitationem quae ut iure quod quas ipsa.
+
+            </p>
+
+            <p class="episode-text">
+              Lorem ipsum dolor sit, amet consectetur adipisicing elit. Aut, maiores! Qui fugiat veniam exercitationem
+              quis?
+            </p>
+          </div>
+        </div>
+
+        <div class="episode-host-card">
+          <h3 class="episode-host-title"><span class="episode-host-title-desc">Host</span><span
+              class="episode-host-title-name">Mark Njoroge</span></h3>
+
+          <img src="./imgs/author@0.1x.jpg" alt="Podcast host name" class="episode-host-img">
+
+          <p class="episode-bio">
+            Mark is self-taught software engineer from Kenya. He is not shy to use AI to supplement his skills. He
+            love's to
+            hung around other developers and sharing his JavaScript/frontend/backend self-taught journey.
+          </p>
+
+          <div class="episode-social">
+            <a href="#">
+              <svg>
+                <use xlink:href="./imgs/social-media-icons.svg#youtube-logo-fill"></use>
+              </svg>
+            </a>
+
+            <a href="#">
+              <svg>
+                <use xlink:href="./imgs/social-media-icons.svg#linkedin-logo-fill"></use>
+              </svg>
+            </a>
+
+            <a href="#">
+              <svg>
+                <use xlink:href="./imgs/social-media-icons.svg#twitter-logo-fill"></use>
+              </svg>
+            </a>
+          </div>
+        </div>
+      </article>
+    </section>
+  </main>
+
+</body>
+
+</html>
